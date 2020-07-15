@@ -22,6 +22,11 @@ class FeedbackController extends Controller
 
     public function store()
     {
+        // Validate data dari borang
+
+        // Takde masalah dengan data, simpan ke DB
+
+        // Return response     
         return 'Borang berjaya dihantar!';
     }
 

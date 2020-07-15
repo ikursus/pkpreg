@@ -86,8 +86,8 @@
 
                 <div class="links">
                     <a href="{{ route('checkin.create') }}">Daftar/Check-In</a>
-                    <a href="/login">Login</a>
-                    <a href="/register">Daftar Akaun</a>
+                    <a href="{{ route('login') }}">Login</a>
+                    <a href="{{ route('register') }}">Daftar Akaun</a>
                     <a href="{{ route('feedback.create') }}">Hantar Feedback</a>
                 </div>
             </div>
