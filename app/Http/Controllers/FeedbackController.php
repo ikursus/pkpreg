@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class FeedbackController extends Controller
 {
@@ -20,14 +21,22 @@ class FeedbackController extends Controller
         return view('borang_feedback', compact('page_title'));
     }
 
-    public function store()
+    public function store(Request $request)
     {
+        // Validasi data dari borang
+        $request->validate([
+            'nama' => 'required|min:3',
+            'email' => ['required', 'email'],
+            'telefon' => 'digits_between:10,11'
+        ]);
+
+        $data = $request->all();
         // Validate data dari borang
 
         // Takde masalah dengan data, simpan ke DB
 
         // Return response     
-        return 'Borang berjaya dihantar!';
+        return $data;
     }
 
 

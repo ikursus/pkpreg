@@ -20,8 +20,12 @@
 
                 <div class="card-body">
 
+                    @include('layouts.alerts')
+
+
         <form method="POST" action="">
             @csrf
+
             <div class="form-group">
                 <label>Nama</label>
                 <input type="text" name="nama" class="form-control">

@@ -44,7 +44,19 @@ class CheckinlistController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama' => ['required', 'min:3'],
+            'email' => ['required', 'email'],
+            'telefon' => ['required', 'digits_between:10,11'],
+            'address' => ['required', 'min:3'],
+            'suhu' => ['required', 'numeric'],
+            'tarikh' => ['required', 'date'],
+            'masa' => ['required']
+        ]);
+
+        $data = $request->all();
+
+        return $data;
     }
 
     /**

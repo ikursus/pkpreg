@@ -20,41 +20,43 @@
 
                 <div class="card-body">
 
+                    @include('layouts.alerts')
+
         <form method="POST" action="">
             @csrf
             <div class="form-group">
                 <label>Nama</label>
-                <input type="text" name="nama" class="form-control">
+                <input type="text" name="nama" class="form-control" value="{{ old('nama') }}">
             </div>
 
             <div class="form-group">
                 <label>Email</label>
-                <input type="email" name="email" class="form-control">
+                <input type="email" name="email" class="form-control" value="{{ old('email') }}">
             </div>
 
             <div class="form-group">
                 <label>Telefon</label>
-                <input type="text" name="telefon" class="form-control">
+                <input type="text" name="telefon" class="form-control" value="{{ old('telefon') }}">
             </div>
 
             <div class="form-group">
                 <label>Alamat</label>
-                <textarea name="address" class="form-control"></textarea>
+                <textarea name="address" class="form-control">{{ old('address') }}</textarea>
             </div>
 
             <div class="form-group">
                 <label>Suhu Badan</label>
-                <input type="number" step="0.1" min="30" name="suhu" class="form-control">
+                <input type="number" step="0.1" min="30" name="suhu" class="form-control" value="{{ old('suhu') }}">
             </div>
 
             <div class="form-group">
                 <label>Tarikh Check In</label>
-                <input type="date" name="tarikh" class="form-control">
+                <input type="date" name="tarikh" class="form-control" value="{{ old('tarikh') }}">
             </div>
 
             <div class="form-group">
                 <label>Masa Check In</label>
-                <input type="time" name="masa" class="form-control">
+                <input type="time" name="masa" class="form-control" value="{{ old('masa') }}">
             </div>
 
             <button type="reset" class="btn btn-secondary">Reset</button>
