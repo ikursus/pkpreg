@@ -73,7 +73,3 @@
 </div>
 
 @endsection
-
-@section('footer')
-sample
-@endsection
