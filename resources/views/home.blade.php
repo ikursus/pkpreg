@@ -25,7 +25,17 @@
                     </div>
                 @endif
 
-                {{ __('You are logged in!') }}
+                <p>
+                    <div class="alert alert-info">
+                        {{ __('You are logged in!') }}
+                    </div>
+                </p>
+
+                <p>
+                    <a href="{{ route('profile.edit') }}" class="btn btn-primary">
+                    Profile
+                    </a>
+                </p>
             </div>
         </div>
     </div>
