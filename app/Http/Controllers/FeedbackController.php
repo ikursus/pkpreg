@@ -4,9 +4,25 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FeedbackController extends Controller
 {
+
+    public function index()
+    {
+        $page_title = 'Senarai Feedback Anda';
+
+        $feedbacks = DB::table('feedbacks')
+        // ->orderBy('nama', 'asc')
+        // ->whereIn('email', ['ipin@gmail.com', 'upin@gmail.com'])
+        // ->select('nama', 'email')
+        //->get();
+        ->paginate(2);
+
+        return view('feedbacks/senarai_feedback', compact('page_title', 'feedbacks'));
+    }
+
     public function create()
     {    
         $page_title = 'Borang Feedback';
@@ -18,7 +34,7 @@ class FeedbackController extends Controller
         // ->with('copyright', $copyright);
         // Cara 3 passing data ke view
 
-        return view('borang_feedback', compact('page_title'));
+        return view('feedbacks/borang_feedback', compact('page_title'));
     }
 
     public function store(Request $request)
@@ -29,14 +45,18 @@ class FeedbackController extends Controller
             'email' => ['required', 'email'],
             'telefon' => 'digits_between:10,11'
         ]);
+        // Dapatkan data yang diisi pada borang
+        $data = $request->only([
+            'nama',
+            'email',
+            'telefon',
+            'komen'
+        ]);
+        // Simpan data ke database table feedbacks
+        DB::table('feedbacks')->insert($data);
 
-        $data = $request->all();
-        // Validate data dari borang
-
-        // Takde masalah dengan data, simpan ke DB
-
-        // Return response     
-        return $data;
+        // Akhir sekali, redirect user ke halaman /home
+        return redirect()->route('feedback.index');
     }
 
 

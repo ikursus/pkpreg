@@ -6,21 +6,33 @@ Auth::routes();
 
 Route::get('/', 'WelcomeController@index');
 
-Route::get('feedback', 'FeedbackController@create')->name('feedback.create');
-Route::post('feedback', 'FeedbackController@store')->name('feedback.store');
+Route::group(['middleware' => 'auth'], function() {
+
+    // Halaman Pelanggan
+    Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::get('feedback', 'FeedbackController@index')->name('feedback.index');
+    Route::get('feedback/new', 'FeedbackController@create')->name('feedback.create');
+    Route::post('feedback/new', 'FeedbackController@store')->name('feedback.store');
+
+    Route::get('profile', 'ProfileController@edit')->name('profile.edit');
+    Route::patch('profile', 'ProfileController@update')->name('profile.update');
+
+    Route::get('checkinlist', 'CheckinlistController@index')->name('checkinlist.index');
+    Route::get('checkinlist/new', 'CheckinlistController@create')->name('checkinlist.create');
+    Route::post('checkinlist/new', 'CheckinlistController@store')->name('checkinlist.store');
+
+});
+
+
+
 
 Route::get('checkin', 'CheckinController@create')->name('checkin.create');
 Route::post('checkin', 'CheckinController@store')->name('checkin.store');
 
-// Halaman Pelanggan
-Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('profile', 'ProfileController@edit')->name('profile.edit');
-Route::patch('profile', 'ProfileController@update')->name('profile.update');
 
-Route::get('checkinlist', 'CheckinlistController@index')->name('checkinlist.index');
-Route::get('checkinlist/new', 'CheckinlistController@create')->name('checkinlist.create');
-Route::post('checkinlist/new', 'CheckinlistController@store')->name('checkinlist.store');
+
 
 // Halaman Admin
 // Route::group(['prefix' => 'admin'], function() {

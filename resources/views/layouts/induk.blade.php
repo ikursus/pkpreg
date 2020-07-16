@@ -35,7 +35,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a href="{{ route('checkin.create') }}" class="nav-link">Check In</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ route('feedback.create') }}" class="nav-link">Feedback</a>
+        <a href="{{ route('feedback.index') }}" class="nav-link">Feedback</a>
       </li>
     </ul>
     
