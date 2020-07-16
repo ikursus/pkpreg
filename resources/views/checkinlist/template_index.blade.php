@@ -24,18 +24,28 @@
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>NAMA</th>
+                    <th>EMAIL</th>
+                    <th>TELEFON</th>
                     <th>TARIKH</th>
-                    <th>MASA</th>
                     <th>SUHU</th>
+                    <th>ALAMAT</th>
+                    <th>TINDAKAN</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach( $checklists as $data )
                 <tr>
-                    <td scope="row">{{ $data['id'] }}</td>
-                    <td>{{ $data['tarikh'] }}</td>
-                    <td>{{ $data['masa'] }}</td>
-                    <td>{{ $data['suhu'] }}</td>
+                    <td scope="row">{{ $data->id }}</td>
+                    <td>{{ $data->nama }}</td>
+                    <td>{{ $data->email }}</td>
+                    <td>{{ $data->telefon }}</td>
+                    <td>{{ $data->tarikh }}</td>
+                    <td>{{ $data->suhu }}</td>
+                    <td>{{ $data->address }}</td>
+                    <td>
+                        <a href="" class="btn btn-danger btn-sm">DELETE</a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

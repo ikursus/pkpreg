@@ -32,7 +32,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a href="{{ url('/') }}" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ route('checkin.create') }}" class="nav-link">Check In</a>
+        <a href="{{ route('checkinlist.index') }}" class="nav-link">Check In</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="{{ route('feedback.index') }}" class="nav-link">Feedback</a>

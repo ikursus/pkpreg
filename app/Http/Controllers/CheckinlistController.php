@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CheckinlistController extends Controller
 {
@@ -15,11 +16,7 @@ class CheckinlistController extends Controller
     {
         $page_title = 'Senarai Sejarah Check-in';
 
-        $checklists = [
-            ['id' => 1, 'tarikh' => '13-07-2020', 'masa' => '8:30', 'suhu' => '36.0'],
-            ['id' => 2, 'tarikh' => '14-07-2020', 'masa' => '8:30', 'suhu' => '36.1'],
-            ['id' => 3, 'tarikh' => '15-07-2020', 'masa' => '8:30', 'suhu' => '36.5']
-        ];
+        $checklists = DB::table('checkin')->get();
 
         return view('checkinlist.template_index', compact('page_title', 'checklists'));
     }
@@ -50,13 +47,15 @@ class CheckinlistController extends Controller
             'telefon' => ['required', 'digits_between:10,11'],
             'address' => ['required', 'min:3'],
             'suhu' => ['required', 'numeric'],
-            'tarikh' => ['required', 'date'],
-            'masa' => ['required']
+            'tarikh' => ['required', 'date']
         ]);
 
-        $data = $request->all();
+        $data = $request->except('_token', 'masa');
+        $data['user_id'] = auth()->user()->id;
 
-        return $data;
+        DB::table('checkin')->insert($data);
+
+        return redirect()->route('checkinlist.index');
     }
 
     /**
