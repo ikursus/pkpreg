@@ -15,6 +15,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('feedback/new', 'FeedbackController@create')->name('feedback.create');
     Route::post('feedback/new', 'FeedbackController@store')->name('feedback.store');
     Route::get('feedback/{id}/edit', 'FeedbackController@edit')->name('feedback.edit');
+    Route::patch('feedback/{id}/edit', 'FeedbackController@update')->name('feedback.update');
+    Route::delete('feedback/{id}', 'FeedbackController@destroy')->name('feedback.destroy');
 
     Route::get('profile', 'ProfileController@edit')->name('profile.edit');
     Route::patch('profile', 'ProfileController@update')->name('profile.update');

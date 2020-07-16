@@ -46,8 +46,9 @@
                 <textarea name="komen" class="form-control"></textarea>
             </div>
 
+            <input type="submit" name="action" value="Save" class="btn btn-success">
+            <input type="submit" name="action" value="Submit" class="btn btn-primary">
             <button type="reset" class="btn btn-secondary">Reset</button>
-            <button type="submit" class="btn btn-primary">Hantar</button>
 
         </form>
 

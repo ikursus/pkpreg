@@ -25,6 +25,8 @@
 
                     <form method="POST" action="">
                         @csrf
+                        <input type="hidden" name="_method" value="PATCH">
+                        @method('PATCH')
             
                         <div class="form-group">
                             <label>Nama</label>
@@ -47,7 +49,8 @@
                         </div>
             
                         <button type="reset" class="btn btn-secondary">Reset</button>
-                        <button type="submit" class="btn btn-primary">Update</button>
+                        <input type="submit" name="action" value="Save" class="btn btn-success">
+                        <input type="submit" name="action" value="Submit" class="btn btn-primary">
             
                     </form>
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Checkin;
 
 class CheckinlistController extends Controller
 {
@@ -51,12 +52,13 @@ class CheckinlistController extends Controller
             'tarikh' => ['required', 'date']
         ]);
 
-        $data = $request->except('_token', 'masa');
+        $data = $request->all();
 
         // $data['user_id'] = auth()->user()->id;
         $data['user_id'] = Auth::id();
 
-        DB::table('checkin')->insert($data);
+        // DB::table('checkin')->insert($data);
+        Checkin::create($data);
 
         return redirect()->route('checkinlist.index');
     }
