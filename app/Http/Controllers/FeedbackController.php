@@ -60,5 +60,16 @@ class FeedbackController extends Controller
     }
 
 
+    public function edit($id)
+    {
+        // Dapatkan data daripada table feedbacks berdasarkan ID yang dibekalkan
+        // pada routing parameters {id}
+        $feedback = DB::table('feedbacks')->where('id', '=', $id)->first();
+        $page_title = 'Edit Feedback ID: ' . $id;
+
+        return view('feedbacks/edit_feedback', compact('page_title', 'feedback'));
+    }
+
+
 
 }

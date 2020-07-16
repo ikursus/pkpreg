@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class CheckinlistController extends Controller
 {
@@ -16,9 +17,9 @@ class CheckinlistController extends Controller
     {
         $page_title = 'Senarai Sejarah Check-in';
 
-        $checklists = DB::table('checkin')->get();
+        $checkinlists = DB::table('checkin')->get();
 
-        return view('checkinlist.template_index', compact('page_title', 'checklists'));
+        return view('checkinlist.template_index', compact('page_title', 'checkinlists'));
     }
 
     /**
@@ -51,7 +52,9 @@ class CheckinlistController extends Controller
         ]);
 
         $data = $request->except('_token', 'masa');
-        $data['user_id'] = auth()->user()->id;
+
+        // $data['user_id'] = auth()->user()->id;
+        $data['user_id'] = Auth::id();
 
         DB::table('checkin')->insert($data);
 

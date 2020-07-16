@@ -40,7 +40,7 @@
                     <td>{{ $data->telefon ?? null}}</td>
                     <td>{{ $data->komen ?? null}}</td>
                     <td>
-                        <a href="" class="btn btn-danger btn-sm">DELETE</a>
+                        <a href="{{ route('feedback.edit', $data->id) }}" class="btn btn-info btn-sm">EDIT</a>
                     </td>
                 </tr>
                 @endforeach

@@ -34,7 +34,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach( $checklists as $data )
+                @foreach( $checkinlists as $data )
                 <tr>
                     <td scope="row">{{ $data->id }}</td>
                     <td>{{ $data->nama }}</td>
